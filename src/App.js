@@ -1,26 +1,31 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState, useEffect } from 'react';
 import './App.css';
+import { Button } from 'element-react';
+import 'element-theme-default';
 
 function App() {
+  const [count, setCount] = useState(0);
+  const [num, setNum] = useState(2);
+  console.log(count)
+  console.log(setCount)
+  console.log(useState)
+  useEffect(() => {
+    // Update the document title using the browser API
+    document.title = ` ${count} times`;
+  }, [count]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Button type='primary'>button</Button>
+      <p>You clicked {count} times</p>
+      <button onClick={() => setCount(count + 1)}>
+        Click me
+      </button>
+      <p>num is {num}</p>
+      <button onClick={() => setNum(num + count)}>
+        Click me num
+      </button>
     </div>
-  );
+  )
 }
 
 export default App;
